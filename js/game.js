@@ -36,7 +36,7 @@ var game = (function () {
                 result = false;
                 if (board[position].sign == '') {
                     board[position].sign = currentPlayer;
-                    document.getElementById('field' + position).value = currentPlayer;
+                    document.getElementById('field' + position).innerText = currentPlayer;
                     if (currentPlayer == player1) {
                         currentPlayer = player2;
                     }
@@ -67,7 +67,7 @@ var game = (function () {
             var iter;
             for (iter = 0; iter < board.length; iter++) {
                 board[iter].sign = '';
-                document.getElementById('field' + iter).value = '';
+                document.getElementById('field' + iter).innerText = '';
             }
             wasMoveBefore = false;
             gameEnded = false;
@@ -79,7 +79,7 @@ var game = (function () {
             else {
                 beginningPlayer = player1;
             }
-            document.getElementById('beginningPlayerLabel').innerText = 'Nową grę rozpocznie ' + beginningPlayer;
+            document.getElementById('beginningPlayerButton').value = 'Nową grę rozpocznie gracz ' + beginningPlayer;
         }
     }
 })();

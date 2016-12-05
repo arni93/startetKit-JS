@@ -1,8 +1,7 @@
-
 <html lang="pl">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <title>Kółko i krzyżyk</title>
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
     <script type="text/javascript" src="js/game.js"></script>
@@ -10,49 +9,42 @@
 </head>
 
 <h1>Gra w kółko i krzyżyk</h1>
+
 <body>
-    <div class="game-border">
-        <table class="game">
-            <tr>
-                <td>
-                    <input type="button" id="field0" value="" onclick="game.makeMove(0,0)"></input>
-                </td>
-                <td><input type="button" id="field1" value="" onclick="game.makeMove(0,1)"></input>
-                </td>
-                <td><input type="button" id="field2" value="" onclick="game.makeMove(0,2)"></input>
-                </td>
-            </tr>
-            <tr>
-                <td><input type="button" id="field3" value="" onclick="game.makeMove(1,0)"></input>
-                </td>
-                <td><input type="button" id="field4" value="" onclick="game.makeMove(1,1)"></input>
-                </td>
-                <td><input type="button" id="field5" value="" onclick="game.makeMove(1,2)"></input>
-                </td>
-            </tr>
-            <tr>
-                <td><input type="button" id="field6" value="" onclick="game.makeMove(2,0)"></input>
-                </td>
-                <td><input type="button" id="field7" value="" onclick="game.makeMove(2,1)"></input>
-                </td>
-                <td><input type="button" id="field8" value="" onclick="game.makeMove(2,2)"></input>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="buttons">
-        <input type="button" name="" value="Zmień rozpoczynającego gracza" onclick="game.changeBeginningPlayer()">
-        <label id="beginningPlayerLabel">Nową grę rozpocznie X</label>
-        <br>
-        <input type="button" name="" value="Zresetuj grę" onclick="game.resetGame()">
-    </div>
+    <table class="game">
+        <tr>
+            <td id="field0" onclick="game.makeMove(0,0)">
+            </td>
+            <td id="field1" onclick="game.makeMove(0,1)">
+            </td>
+            <td id="field2" onclick="game.makeMove(0,2)">
+            </td>
+        </tr>
+        <tr>
+            <td id="field3" onclick="game.makeMove(1,0)">
+            </td>
+            <td id="field4" onclick="game.makeMove(1,1)">
+            </td>
+            <td id="field5" onclick="game.makeMove(1,2)">
+        </tr>
+        <tr>
+            <td id="field6" onclick="game.makeMove(2,0)">
+            </td>
+            <td id="field7" onclick="game.makeMove(2,1)">
+            </td>
+            <td id="field8" onclick="game.makeMove(2,2)">
+        </tr>
+    </table>
+    <input id="beginningPlayerButton" type="button" class="change_player" value="Nową grę rozpocznie gracz X" onclick="game.changeBeginningPlayer()">
+    <input type="button" class="reset_game" value="Nowa gra" onclick="game.resetGame()">
 
     <div class="statistics">
-        <label id = "xPlayerWon">krzyżyk wygrał 0 razy</label>
+        <h2>Statystyki</h2>
+        <label id="xPlayerWon">krzyżyk wygrał 0 razy</label>
         <br>
-        <label id = "oPlayerWon">kółko wygrał 0 razy</label>
+        <label id="oPlayerWon">kółko wygrał 0 razy</label>
         <br>
-        <label id = "tieQuantity">było 0 remisów</label>
+        <label id="tieQuantity">było 0 remisów</label>
     </div>
 
 
