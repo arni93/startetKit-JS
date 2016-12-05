@@ -26,60 +26,103 @@ var game = (function () {
     ];
     return {
         makeMove: function (x, y) {
-            var gameResult;
+            var gameResult, pushBoardChangesToView, changeCurrentPlayer, alertGameResult, updateHistory, pushHistoryToView;
+            pushBoardChangesToView = function (movePosition) {
+                var htmlNode;
+                htmlNode = document.getElementById('field' + movePosition)
+                if (htmlNode != null) {
+                    htmlNode.innerText = currentPlayer;
+                    htmlNode.className = ('player_' + currentPlayer.toLowerCase());
+                }
+            };
+            changeCurrentPlayer = function () {
+                if (currentPlayer == player1) {
+                    currentPlayer = player2;
+                }
+                else {
+                    currentPlayer = player1;
+                }
+            };
+            alertGameResult = function (gameResult) {
+                if (gameResult == 'X') {
+                    alert('Wygrał X');
+                }
+                else if (gameResult == 'O') {
+                    alert('Wygrał O');
+                }
+                else {
+                    alert('Remis');
+                }
+            };
+            updateHistory = function(whoWon){
+                if (whoWon == 'X'){
+                    history.xWon();
+                }
+                else if (whoWon == 'O'){
+                    history.oWon();
+                }
+                else{
+                    history.wasDraw();
+                }
+            };
+            pushHistoryToView = function(){
+                document.getElementById('xPlayerWon').value = history.getTimesXWon();
+                document.getElementById('oPlayerWon').value = history.getTimesOWon();
+                document.getElementById('tieQuantity').value = history.getTimesWasDraw();
+            }
+
             if (!gameEnded) {
                 if (!wasMoveBefore) {
                     currentPlayer = beginningPlayer;
                 }
-                var result, position;
-                position = x * 3 + y
-                result = false;
+                var position;
+                position = x * 3 + y;
                 if (board[position].sign == '') {
                     board[position].sign = currentPlayer;
-                    document.getElementById('field' + position).innerText = currentPlayer;
-                    if (currentPlayer == player1) {
-                        currentPlayer = player2;
-                    }
-                    else {
-                        currentPlayer = player1;
-                    }
+                    pushBoardChangesToView(position);
+                    changeCurrentPlayer();
                     wasMoveBefore = true;
-                    result = true;
                     if (winnerChecker.isGameEnded(board)) {
                         gameEnded = true;
                         gameResult = winnerChecker.getGameResult(board);
-                        if (gameResult == 'X') {
-                            alert('Wygrał x');
-                        }
-                        else if (gameResult == 'O') {
-                            alert('Wygrał o');
-                        }
-                        else {
-                            alert('Remis');
-                        }
+                        alertGameResult(gameResult);
+                        //update history
+                        updateHistory();
+                        pushHistoryToView();
                     }
                 }
                 return result;
             }
-            
+
         },
         resetGame: function () {
-            var iter;
-            for (iter = 0; iter < board.length; iter++) {
-                board[iter].sign = '';
-                document.getElementById('field' + iter).innerText = '';
-            }
+            var iter, clearGameView, htmlElement;
+            clearGameView = function () {
+                for (iter = 0; iter < board.length; iter++) {
+                    board[iter].sign = '';
+                    htmlElement = document.getElementById('field' + iter);
+                    if (htmlElement != null) {
+                        htmlElement.innerText = '';
+                    }
+                }
+            };
+            clearGameView();
             wasMoveBefore = false;
             gameEnded = false;
         },
         changeBeginningPlayer: function () {
+            var htmlElement;
             if (beginningPlayer == player1) {
                 beginningPlayer = player2;
             }
             else {
                 beginningPlayer = player1;
             }
-            document.getElementById('beginningPlayerButton').value = 'Nową grę rozpocznie gracz ' + beginningPlayer;
+
+            htmlElement = document.getElementById('beginningPlayerButton');
+            if (htmlElement != null) {
+                htmlElement.value = 'Nową grę rozpocznie gracz ' + beginningPlayer;
+            }
         }
     }
 })();

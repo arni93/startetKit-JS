@@ -3,7 +3,7 @@ h1, h2 {
 }
 
 body {
-    background-color: deepskyblue;
+    background-color: white;
 }
 table.game {
     margin-left: 30%;
@@ -21,7 +21,7 @@ td{
     text-align: center;
     vertical-align: middle;
     font-size: 120px;
-    border-width: 5px;
+    border-width: 10px;
     border-style: solid;
     border-color: black;
 }
@@ -44,7 +44,14 @@ input.reset_game{
 .statistics{
     margin-left: 30%;
     margin-right: 30%;
+    font-size: 150%;
     text-align: center;
-    background: red;
+    background: lightgray;
+}
 
+.player_x{
+    color: black;
+}
+.player_o{
+    color: white
 }
