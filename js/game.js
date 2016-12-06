@@ -26,14 +26,12 @@ var game = (function () {
     ];
     return {
         makeMove: function (x, y) {
-            var gameResult, pushBoardChangesToView, changeCurrentPlayer, alertGameResult, updateHistory, pushHistoryToView;
+            var gameResult, pushBoardChangesToView, changeCurrentPlayer, alertGameResult, updateHistory, pushHistoryToView, result;
             pushBoardChangesToView = function (movePosition) {
                 var htmlNode;
                 htmlNode = document.getElementById('field' + movePosition)
-                if (htmlNode != null) {
-                    htmlNode.innerText = currentPlayer;
+                    htmlNode.innerHTML = currentPlayer;
                     htmlNode.className = ('player_' + currentPlayer.toLowerCase());
-                }
             };
             changeCurrentPlayer = function () {
                 if (currentPlayer == player1) {
@@ -69,8 +67,8 @@ var game = (function () {
                 document.getElementById('xPlayerWon').value = history.getTimesXWon();
                 document.getElementById('oPlayerWon').value = history.getTimesOWon();
                 document.getElementById('tieQuantity').value = history.getTimesWasDraw();
-            }
-
+            };
+            result = false;
             if (!gameEnded) {
                 if (!wasMoveBefore) {
                     currentPlayer = beginningPlayer;
@@ -86,14 +84,13 @@ var game = (function () {
                         gameEnded = true;
                         gameResult = winnerChecker.getGameResult(board);
                         alertGameResult(gameResult);
-                        //update history
-                        updateHistory();
+                        updateHistory(gameResult);
                         pushHistoryToView();
                     }
+                    result = true;
                 }
-                return result;
             }
-
+            return result;
         },
         resetGame: function () {
             var iter, clearGameView, htmlElement;
@@ -102,7 +99,7 @@ var game = (function () {
                     board[iter].sign = '';
                     htmlElement = document.getElementById('field' + iter);
                     if (htmlElement != null) {
-                        htmlElement.innerText = '';
+                        htmlElement.innerHTML = '';
                     }
                 }
             };

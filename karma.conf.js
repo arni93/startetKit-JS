@@ -16,7 +16,9 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
 		'js/winner-checker.js',
-		'js/winner-checker.spec.js'
+		'js/winner-checker.spec.js',
+		'js/game.js',
+		'js/game.spec.js'
     ],
 
 

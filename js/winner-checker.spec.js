@@ -4,7 +4,7 @@ describe('winnerChecker module tests', function () {
     var playerX, playerO;
     playerX = 'X';
     playerO = 'O';
-    it('shouldReturnGameEndedWhenGameWonByPlayerX', function () {
+    it('shouldGameBeEndedWhenGameWonByPlayerX', function () {
         //given
         var array, result;
         array = [
@@ -23,7 +23,7 @@ describe('winnerChecker module tests', function () {
         //then
         expect(result).toBe(true);
     });
-    it('shouldReturnGameEndedWhenGameWonByPlayerO', function () {
+    it('shouldGameBeEndedWhenGameWonByPlayerO', function () {
         //given
         var array, result;
         array = [
@@ -42,7 +42,7 @@ describe('winnerChecker module tests', function () {
         //then
         expect(result).toBe(true);
     });
-    it('shouldReturnGameEndedWhenGameWonByPlayerX', function () {
+    it('shouldGameBeEndedWhenGameWonByPlayerX', function () {
         //given
         var array, result;
         array = [
@@ -61,7 +61,7 @@ describe('winnerChecker module tests', function () {
         //then
         expect(result).toBe(true);
     });
-    it('shouldReturnGameEndedWhenEndedWithTie', function () {
+    it('shouldGameBeEndedWhenEndedWithTie', function () {
         //given
         var array, result;
         array = [
@@ -80,7 +80,7 @@ describe('winnerChecker module tests', function () {
         //then
         expect(result).toBe(true);
     });
-    it('shouldReturnGameNotEndedForBeginningState', function () {
+    it('shouldGameBeNotEndedForBeginningState', function () {
         //given
         var array, result;
         array = [
@@ -99,7 +99,7 @@ describe('winnerChecker module tests', function () {
         //then
         expect(result).toBe(false);
     });
-    it('shouldReturnGameNotEndedForGivenState', function () {
+    it('shouldGameBeNotEndedForGivenState', function () {
         //given
         var array, result;
         array = [
@@ -216,7 +216,7 @@ describe('winnerChecker module tests', function () {
         //then
         expect(result).toBe('');
     });
-    it('shouldReturnEmptyFieldForGivenState', function () {
+    it('shouldReturnEmptyFieldWhenGameNotEnded', function () {
         //given
         var array, result;
         array = [
